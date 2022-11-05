@@ -10,8 +10,6 @@ Open your terminal and change directory to the project root directory and run `s
 
 Once the spring boot is up browse to [http://localhost:1025/swagger-ui.html](http://localhost:1025/swagger-ui.html)
 
-The open api specs are also stored inside `./openapi/openapi.json`
-
 ## Tear Down
 
 Open your terminal and cd into the root directory and run `sh shutdown.sh` command
