@@ -1,36 +1,33 @@
 package com.bca.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 public class AvaloqIngestRequest implements Serializable {
     private static final long serialVersionUID = 1L;
-    private String data;
+    private String transactionType;
+    private DataModel data;
 
     public AvaloqIngestRequest() {
     }
 
-    public AvaloqIngestRequest(String data) {
+    public AvaloqIngestRequest(DataModel data, String transactionType) {
         this.data = data;
+        this.transactionType = transactionType;
     }
 
-    public String getData() {
+    @JsonProperty("data")
+    @Valid
+    public DataModel getData() {
         return data;
     }
 
-    public static class AvaloqIngestRequestBuilder {
-        private String data;
-
-        public AvaloqIngestRequestBuilder setOtp(String data) {
-            this.data = data;
-            return this;
-        }
-
-        public AvaloqIngestRequest build() {
-            return new AvaloqIngestRequest(data);
-        }
-    }
-
-    public static AvaloqIngestRequestBuilder newBuilder() {
-        return new AvaloqIngestRequestBuilder();
+    @JsonProperty("transaction_type")
+    @NotBlank(message = "Transaction Type must not be blank")
+    public String getTransactionType() {
+        return transactionType;
     }
 }
